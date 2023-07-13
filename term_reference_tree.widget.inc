@@ -221,8 +221,6 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
       $term = $taxonomy_term_info['load hook']($item['tid']);
       // Do not output terms that do not exist.
       if ($term) {
-        $uri = $taxonomy_term_info['uri callback']($term);
-        $uri['options']['html'] = TRUE;
         $class = $item['selected'] ? 'selected' : 'unselected';
         $output_fragment[$term->weight][$itemno] = '<li class="' . $class . '">';
         if ($tokens_selected != '' && module_exists('token')) {
@@ -230,7 +228,7 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
           $output_fragment[$term->weight][$itemno] .= token_replace($replace, array('term' => $term), array('clear' => TRUE));
         }
         else {
-          $output_fragment[$term->weight][$itemno] .= l(filter_xss(entity_label('taxonomy_term', $term)), $uri['path'], $uri['options']);
+          $output_fragment[$term->weight][$itemno] .= l(filter_xss(entity_label('taxonomy_term', $term)), $term->path['source'], array('html' => TRUE));
         }
         if (isset($item['children'])) {
           $output_fragment[$term->weight][$itemno] .= _term_reference_tree_output_list_level($element, $item);
@@ -239,8 +237,8 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
       }
     }
 
-    // Using output fragments with weights as the array key
-    // should force this into current sort order once we sort the array.
+    // Using output fragments with weights as the array key should force this
+    // into current sort order once we sort the array.
     if (isset($output_fragment)) {
       ksort($output_fragment);
       foreach ($output_fragment as $this_fragment) {
