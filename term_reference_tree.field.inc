@@ -16,7 +16,6 @@ function term_reference_tree_field_formatter_info() {
   );
 }
 
-
 /**
  * Implements hook_field_formatter_view().
  */
@@ -38,7 +37,6 @@ function term_reference_tree_field_formatter_view($entity_type, $entity, $field,
 
   return $element;
 }
-
 
 /**
  * Implements hook_field_formatter_settings_form().
@@ -71,7 +69,6 @@ function term_reference_tree_field_formatter_settings_form($field, $instance, $v
 
   return $element;
 }
-
 
 /**
  * Implements hook_field_formatter_settings_summary().

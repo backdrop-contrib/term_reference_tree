@@ -27,7 +27,6 @@ function term_reference_tree_field_widget_info() {
   );
 }
 
-
 /**
  * Implements hook_field_widget_settings_form().
  */
@@ -157,7 +156,6 @@ function term_reference_tree_field_widget_settings_form($field, $instance) {
   return $form;
 }
 
-
 /**
  * Theme the term tree display (as opposed to the select widget).
  */
@@ -205,7 +203,6 @@ function theme_term_tree_list($variables) {
   return $output;
 }
 
-
 /**
  * Helper function to output a single level of the term reference tree display.
  */
@@ -251,7 +248,6 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
   }
 }
 
-
 /**
  * Make sure that cardinality is unlimited if auto-select parents is enabled.
  */
@@ -262,7 +258,6 @@ function _term_reference_tree_select_parents_validate($element, &$form_state) {
     form_set_error('field][cardinality', t('You must select an Unlimited number of values if Select Parents Automatically is enabled.'));
   }
 }
-
 
 /**
  * Make sure that cardinality is unlimited if cascading selection is enabled.
@@ -279,7 +274,6 @@ function _term_reference_tree_cascading_selection_validate($element, &$form_stat
     }
   }
 }
-
 
 /**
  * Process the checkbox_tree widget.
@@ -355,7 +349,6 @@ function term_reference_tree_process_checkbox_tree($element, $form_state) {
   return $element;
 }
 
-
 /**
  * Returns HTML for a checkbox_tree form element.
  *
@@ -403,7 +396,6 @@ function theme_checkbox_tree($variables) {
     . '</div>';
 }
 
-
 /**
  * Print a list item with a checkbox and an unordered list of all the elements
  * inside it.
@@ -443,7 +435,6 @@ function theme_checkbox_tree_level($variables) {
   return $output;
 }
 
-
 /**
  * Print a single item in the tree, followed by that item's children (which may
  * be another checkbox_tree_level).
@@ -472,7 +463,6 @@ function theme_checkbox_tree_item($variables) {
 
   return $output;
 }
-
 
 /**
  * Print a label that cannot be selected.
@@ -519,7 +509,6 @@ function theme_checkbox_tree_track_list($variables) {
 
   return $output;
 }
-
 
 /**
  * Implements hook_field_widget_form().
@@ -584,7 +573,6 @@ function term_reference_tree_field_widget_form(&$form, &$form_state, $field, $in
   return $element;
 }
 
-
 /**
  * Validate the term reference tree widgets.
  *
@@ -641,7 +629,6 @@ function _term_reference_tree_widget_validate(&$element, &$form_state) {
   return $element;
 }
 
-
 /**
  * Return an array of allowed values defined by the given view.
  *
@@ -681,7 +668,6 @@ function _term_reference_tree_get_allowed_values($filter) {
 
   return $allowed;
 }
-
 
 /**
  * Build a single item in the term reference tree widget.
@@ -772,7 +758,6 @@ function _term_reference_tree_build_item($element, $term, $form_state, $value, $
   return $container;
 }
 
-
 /**
  * Build a level in the term reference tree widget.
  *
@@ -833,7 +818,6 @@ function _term_reference_tree_build_level($element, $term, $form_state, $value, 
 
   return $container;
 }
-
 
 /**
  * Ajax callback to load children for a list.

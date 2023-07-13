@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ *
+ * Main file implementing hooks and callbacks.
+ */
+
 module_load_include('inc', 'term_reference_tree', 'term_reference_tree.field');
 module_load_include('inc', 'term_reference_tree', 'term_reference_tree.widget');
 
@@ -38,7 +44,6 @@ function term_reference_tree_element_info() {
   return $types;
 }
 
-
 /**
  * Implements hook_theme().
  */
@@ -64,7 +69,6 @@ function term_reference_tree_theme() {
     ),
   );
 }
-
 
 /**
  * Return a taxonomy term hierarchy in a nested array.
@@ -94,7 +98,6 @@ function _term_reference_tree_get_term_hierarchy($tid, $vocabulary_name, $allowe
   return _term_reference_tree_get_term_hierarchy_recursive($tid, $tree, $expanded, $use_ajax, $max_depth);
 }
 
-
 /**
  * Recursive helper function for _term_reference_tree_get_term_hierarchy().
  */
@@ -122,7 +125,6 @@ function _term_reference_tree_get_term_hierarchy_recursive($parent_tid, $tree, $
 
   return $terms;
 }
-
 
 /**
  * Get all terms and their parent and children hierarchy for a given vocabulary_name.
@@ -162,7 +164,6 @@ function _term_reference_tree_taxonomy_get_tree($vocabulary_name) {
   return $tree[$vocabulary_name];
 }
 
-
 /**
  * Get all parent tids for a given vocabulary_name and children tids.
  *
@@ -179,7 +180,6 @@ function _term_reference_tree_taxonomy_term_load_parents_all($vocabulary_name, $
   return _term_reference_tree_taxonomy_term_load_parents_all_recursive($vocabulary_name, $children_tids, $tree);
 }
 
-
 /**
  * Helper function for _term_reference_tree_taxonomy_term_load_parents_all().
  */
@@ -195,7 +195,6 @@ function _term_reference_tree_taxonomy_term_load_parents_all_recursive($vocabula
   }
   return $parents;
 }
-
 
 /**
  * Resolve the label to use in the widget for the given taxonomy terms.
@@ -225,7 +224,6 @@ function _term_reference_tree_taxonomy_resolve_labels($terms, $token_display) {
   }
 }
 
-
 /**
  * Flatten the tree hierarchy.
  */
@@ -240,7 +238,6 @@ function _term_reference_tree_hierarchy_flatten($terms_hierarchy) {
   }
   return $terms;
 }
-
 
 /**
  * Get the parent tid of a taxonomy terms.
@@ -259,7 +256,6 @@ function _term_reference_tree_get_parent($tid) {
 
   return $t;
 }
-
 
 /**
  * Recursively go through the option tree and return a flat array of options.

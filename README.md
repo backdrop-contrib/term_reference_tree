@@ -51,19 +51,13 @@ filter them by a view or limit the number of selectable options with JavaScript.
 It's a good idea to turn on the "leaves only" option in this case, as it will
 make it look nicer.
 
-Documentation
--------------
-
-Additional documentation is located in [the
-Wiki](https://github.com/backdrop-contrib/term_reference_tree/wiki/Documentation).
-
 Differences from Drupal 7
 -------------------------
 
 The Backdrop version of this module has some additional classes applied to the
-`<li>` elements of the rendered tree to give more flexibility in theming:
+`li` elements of the rendered tree to give more flexibility in theming:
 
-* `<li>` elements have class `has-children` or `no-children`, as applicable.
+* `li` elements have class `has-children` or `no-children`, as applicable.
 
 Issues
 ------
