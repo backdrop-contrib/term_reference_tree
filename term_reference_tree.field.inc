@@ -46,7 +46,7 @@ function term_reference_tree_field_formatter_settings_form($field, $instance, $v
   $settings = $display['settings'];
 
   $element = array();
-  if ($display['type'] == 'term_reference_tree' && module_exists('token')) {
+  if ($display['type'] == 'term_reference_tree') {
     $element['token_display_selected'] = array(
       '#type' => 'textarea',
       '#title' => t('Custom Term Label'),

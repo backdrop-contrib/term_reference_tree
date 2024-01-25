@@ -203,7 +203,7 @@ function _term_reference_tree_taxonomy_term_load_parents_all_recursive($vocabula
  *   The array of taxonomy terms.
  */
 function _term_reference_tree_taxonomy_resolve_labels($terms, $token_display) {
-  if (!empty($token_display) && module_exists('token')) {
+  if (!empty($token_display)) {
     $loaded = entity_load('taxonomy_term', array_keys($terms));
     foreach ($loaded as $term) {
       $terms[$term->tid]->term_reference_tree_token = token_replace($token_display, array('term' => $term), array('clear' => TRUE));
