@@ -105,26 +105,18 @@ function term_reference_tree_field_widget_settings_form($field, $instance) {
       );
     }
 
-    if (module_exists('token')) {
-      $form['token_display'] = array(
-        '#type' => 'textarea',
-        '#title' => t('Custom Term Label'),
-        '#description' => t('Use tokens to change the term labels for the checkboxes and/or radio buttons. Leave this field blank to use the term name.'),
-        '#default_value' => $settings['token_display'],
-      );
+    $form['token_display'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Custom Term Label'),
+      '#description' => t('Use tokens to change the term labels for the checkboxes and/or radio buttons. Leave this field blank to use the term name.'),
+      '#default_value' => $settings['token_display'],
+    );
 
-      $form['tokens_list'] = array(
-        '#theme' => 'token_tree',
-        '#token_types' => array('term'),
-        '#dialog' => TRUE,
-      );
-    }
-    else {
-      $form['token_display'] = array(
-        '#type' => 'hidden',
-        '#value' => $settings['token_display'],
-      );
-    }
+    $form['tokens_list'] = array(
+      '#theme' => 'token_tree',
+      '#token_types' => array('term'),
+      '#dialog' => TRUE,
+    );
 
     $form['track_list'] = array(
       '#type' => 'checkbox',
@@ -220,7 +212,7 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
       if ($term) {
         $class = $item['selected'] ? 'selected' : 'unselected';
         $output_fragment[$term->weight][$itemno] = '<li class="' . $class . '">';
-        if ($tokens_selected != '' && module_exists('token')) {
+        if ($tokens_selected != '') {
           $replace = $item['selected'] ? $tokens_selected : $tokens_unselected;
           $output_fragment[$term->weight][$itemno] .= token_replace($replace, array('term' => $term), array('clear' => TRUE));
         }
@@ -555,7 +547,7 @@ function term_reference_tree_field_widget_form(&$form, &$form_state, $field, $in
       $element['#track_list'] = $settings['track_list'];
       $element['#parent_tid'] = $settings['parent_term_id'] ? $settings['parent_term_id'] : $field['settings']['allowed_values'][0]['parent'];
       $element['#vocabulary'] = $vocabulary;
-      $element['#token_display'] = module_exists('token') ? $settings['token_display'] : '';
+      $element['#token_display'] = $settings['token_display'];
       break;
   }
 
@@ -695,7 +687,7 @@ function _term_reference_tree_get_allowed_values($filter) {
  */
 function _term_reference_tree_build_item($element, $term, $form_state, $value, $max_choices, $parent_tids, $parent, $depth) {
   $term_name = $term->name;
-  if (!empty($element['#token_display']) && module_exists('token') && !empty($term->term_reference_tree_token)) {
+  if (!empty($element['#token_display']) && !empty($term->term_reference_tree_token)) {
     $term_name = check_plain($term->term_reference_tree_token);
   }
   elseif (!empty($term->term_reference_tree_label)) {
