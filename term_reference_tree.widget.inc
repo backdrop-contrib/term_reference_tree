@@ -214,7 +214,7 @@ function _term_reference_tree_output_list_level(&$element, &$tree) {
         $output_fragment[$term->weight][$itemno] = '<li class="' . $class . '">';
         if ($tokens_selected != '') {
           $replace = $item['selected'] ? $tokens_selected : $tokens_unselected;
-          $output_fragment[$term->weight][$itemno] .= token_replace($replace, array('term' => $term), array('clear' => TRUE));
+          $output_fragment[$term->weight][$itemno] .= check_plain(token_replace($replace, array('term' => $term), array('clear' => TRUE)));
         }
         else {
           $output_fragment[$term->weight][$itemno] .= l(filter_xss(entity_label('taxonomy_term', $term)), $term->path['source'], array('html' => TRUE));
